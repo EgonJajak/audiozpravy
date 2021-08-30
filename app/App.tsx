@@ -33,6 +33,11 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
+            name={Screens.home}
+            component={HomeTabs}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name={Screens.onboarding}
             component={OnboardingScreen}
             options={{ headerShown: false }}
@@ -40,11 +45,6 @@ export default function App() {
           <Stack.Screen
             name={Screens.topics}
             component={TopicsScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name={Screens.home}
-            component={HomeTabs}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
@@ -56,6 +56,20 @@ export default function App() {
 const HomeTabs = () => {
   return (
     <Tab.Navigator tabBar={Bar}>
+      <Tab.Screen
+        name={Screens.queue}
+        component={QueueScreen}
+        options={{
+          title: "Fronta",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="playlist-music"
+              color={color}
+              size={20}
+            />
+          ),
+        }}
+      />
       <Tab.Screen
         name={Screens.news}
         component={NewsScreen}
@@ -74,20 +88,6 @@ const HomeTabs = () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="account-multiple"
-              color={color}
-              size={20}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name={Screens.queue}
-        component={QueueScreen}
-        options={{
-          title: "Fronta",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="playlist-music"
               color={color}
               size={20}
             />
